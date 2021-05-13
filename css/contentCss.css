@@ -1,0 +1,42 @@
+
+#cinemahall {
+    width: 350px;
+    height: 170px;
+    display: grid;
+    border: 1px solid black;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(10, 20px);
+	grid-gap: 10px;
+	padding: 5px;
+	margin: 20px;
+}
+
+.seat { 
+	width: 20px;
+	height: 20px;
+	/*flex: 20px;*/
+	border: 1px solid blue;
+}
+
+.seat:hover {
+	background-color: blue;
+	cursor: pointer;
+}
+
+.booked {
+	background-color: lightblue;
+}
+
+.booked:hover {
+	background-color: lightblue;
+	cursor: auto;
+}
+
+.mw-session {
+	width: 50%;
+	height: 50%;
+	position: absolute;
+	left: 5%;
+	top: 20%;
+}
