@@ -79,19 +79,30 @@ function showBooked(places) {
 
 };
 
+
 function sessionClick(event) {
-	let session = DATABASE[0].session[event.id];
-	let reserved = DATABASE[0].session[event.id].reserved;
-	showSeat(session);
+	let indexes = event.id.split("-");
+	console.log(indexes);
+	let session = DATABASE[indexes[0]].session[indexes[1]];
+	let reserved = DATABASE[indexes[0]].session[indexes[1]].reserved;
+	let sessionCount = session.seat;
+	const root = document.getElementsByClassName("session-root");
+
+	showSeat(sessionCount, root[indexes[0]]);
 	showBooked(reserved);
 	alertSeat(reserved);
+
+	// let session = DATABASE[0].session[event.id];
+	// let reserved = DATABASE[0].session[event.id].reserved;
+	// showSeat(session);
+	// showBooked(reserved);
+	// alertSeat(reserved);
 };
 
-function showSeat (session) {
-	const root = document.getElementById("session-root");
-	const seatsCount = session.seat;
+
+function showSeat (session, root) {
 	let forArr = ``;
-	for (let i = 0; i < seatsCount; i++) {
+	for (let i = 0; i < session; i++) {
 	forArr += `<div class="seat" id=${i}> </div>`;
 	}
 	let cinemahall = `
@@ -103,6 +114,7 @@ function showSeat (session) {
 	`;
 	root.innerHTML = cinemahall;
 }
+
 
 function alertSeat(reserved) {
 	const seats = document.getElementsByClassName("seat");
@@ -120,50 +132,52 @@ function alertSeat(reserved) {
 		);
 }
 
-// !
-
 
 function loader() {
-	const heading = document.getElementsByClassName("el__heading");
-	let arr = Array.from(heading);
-	arr.forEach((current, index) => {
-		current.innerHTML = DATABASE[index].movie;
-	} )
+	const heading = Array.from(document.getElementsByClassName("el__heading"));
+	const bg = Array.from(document.getElementsByClassName("el__bg"));
+	let temp = '';
+
+	for (let i = 0; i < DATABASE.length; i += 1) {
+		heading[i].innerHTML = DATABASE[i].movie;
+		// заголовки секций, название фильма
+		temp = DATABASE[i].img;
+		bg[i].style.backgroundImage = `url(${temp})`;
+		bg[i].style.backgroundRepeat = "no-repeat";
+		bg[i].style.backgroundPosition = "left"; 
+		bg[i].style.backgroundSize = 'contain';
+		bg[i].style.backgroundAttachment = 'fixed';
+		// фоновые постеры для секций
+
+		//детали фильма в каждую секцию
+
+		//
+	}
 }
 
 loader();
 
 
-function background() {
-	const bg = document.getElementsByClassName("el__bg");
-	let arr = Array.from(bg);
-	let temp = '';
-	for (let i = 0; i < 5; i += 1) {
-		temp = DATABASE[i].img;
-		arr[i].style.backgroundImage = `url(${temp})`;
-		arr[i].style.backgroundRepeat = "no-repeat";
-		arr[i].style.backgroundPosition = "left"; 
-		arr[i].style.backgroundSize = 'contain';
-		arr[i].style.backgroundAttachment = 'fixed';
-	  }
-}
-
-
-background();
-
-
 function renderSeans() {
-	let seansRoot = document.getElementsByClassName("seans");
-	let arr = Array.from(seansRoot);
+	let seansRoot = Array.from(document.getElementsByClassName("seans"));
+	let session = null;
 
-	arr.forEach(function (current, index) {
-	let session = DATABASE[index].session;
-	let links = ``;
-	
-		for (let i = 0; i < session.length; i++) {
-			links += `<span class="el__sesion__link" id="${i}" onclick="sessionClick(this)"> Сеанс ${session[i].date} <br> </span>`
-		}
-		current.innerHTML = links;
+	seansRoot.forEach(function (current, index) {
+	session = DATABASE[index].session;
+	let links = ``; 
+
+	for (let i = 0; i < session.length; i++) {
+		links += `<span class="el__sesion__link" id=${index+"-"+i} onclick="sessionClick(this)"> Сеанс ${session[i].date}  </span>`
+	};
+
+	//let session-root = `<div class="session-root" id="1"> </div>`;
+	let div = document.createElement('div');
+	div.className = "session-root";
+	div.id = index;
+
+	current.innerHTML = links;
+	current.append(div);
+
 	});
 };
 
