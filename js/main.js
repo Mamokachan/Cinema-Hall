@@ -1,0 +1,38 @@
+function html() {
+	const root = document.	getElementById("main");
+	let text = '';
+	for (let i = 0; i < 5; i += 1) {
+		text += `<!-- el start -->
+
+    <div class="el">
+      <div class="el__overflow">
+        <div class="el__inner">
+          <div class="el__bg"></div>
+          <div class="el__preview-cont">
+            <h2 class="el__heading"></h2>
+          </div>
+          <div class="el__content">
+            <div class="el__text"></div>
+            <div class="el__inner__component">
+              <div class="details"> </div>
+              <div class="seans"> </div>
+              <a class="link" href=""></a>
+            </div>
+            <div class="el__close-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="el__index">
+        <!-- <div class="el__index-back">3</div> -->
+        <div class="el__index-front">
+          <!-- <div class="el__index-overlay" data-index="3">3</div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- el end -->`
+	}
+	root.innerHTML = text;
+}
+
+html()

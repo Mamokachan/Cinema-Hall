@@ -19,5 +19,8 @@ closeBtnsArr.forEach(function(btn) {
     e.stopPropagation();
     cont.classList.remove('s--el-active');
     document.querySelector('.el.s--active').classList.remove('s--active');
+    
+    let sessionRoot = Array.from(document.getElementsByClassName('session-root'));
+    sessionRoot.forEach((current) => {current.innerHTML = ''});
   });
 });

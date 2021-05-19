@@ -40,3 +40,21 @@
 	left: 5%;
 	top: 20%;
 }
+
+a {
+	color: #d3d3d3;
+	font-style: italic;
+	text-decoration: blink;
+	text-align: center;
+}
+
+a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 2px;
+	color: #fff;
+}
