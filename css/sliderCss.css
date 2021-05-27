@@ -12,7 +12,7 @@ body {
 .cont {
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: 95vh;
   padding: 80px 70px;
 }
 .cont__inner {
@@ -341,8 +341,8 @@ body {
           transition-delay: 0s;
 }
 .el:nth-child(1) .el__bg {
-  -webkit-transform: translate3d(0%, 0, 0);
-          transform: translate3d(0%, 0, 0);
+  -webkit-transform: translate3d(-5%, 0, 0);
+          transform: translate3d(-5%, 0, 0);
 }
 .el:nth-child(1) .el__bg:before {
   -webkit-transition-delay: 0s;
@@ -369,8 +369,8 @@ body {
           transition-delay: 0.1s;
 }
 .el:nth-child(2) .el__bg {
-  -webkit-transform: translate3d(0%, 0, 0);
-          transform: translate3d(0%, 0, 0);
+  -webkit-transform: translate3d(-5%, 0, 0);
+          transform: translate3d(-5%, 0, 0);
 }
 .el:nth-child(2) .el__bg:before {
   -webkit-transition-delay: 0.1s;
@@ -397,8 +397,8 @@ body {
           transition-delay: 0.2s;
 }
 .el:nth-child(3) .el__bg {
-  -webkit-transform: translate3d(0%, 0, 0);
-          transform: translate3d(0%, 0, 0);
+  -webkit-transform: translate3d(-5%, 0, 0);
+          transform: translate3d(-5%, 0, 0);
 }
 .el:nth-child(3) .el__bg:before {
   -webkit-transition-delay: 0.2s;
@@ -425,8 +425,8 @@ body {
           transition-delay: 0.3s;
 }
 .el:nth-child(4) .el__bg {
-  -webkit-transform: translate3d(0%, 0, 0);
-          transform: translate3d(0%, 0, 0);
+  -webkit-transform: translate3d(-5%, 0, 0);
+          transform: translate3d(-5%, 0, 0);
 }
 .el:nth-child(4) .el__bg:before {
   -webkit-transition-delay: 0.3s;
@@ -453,8 +453,8 @@ body {
           transition-delay: 0.4s;
 }
 .el:nth-child(5) .el__bg {
-  -webkit-transform: translate3d(0%, 0, 0);
-          transform: translate3d(0%, 0, 0);
+  -webkit-transform: translate3d(-5%, 0, 0);
+          transform: translate3d(-5%, 0, 0);
 }
 .el:nth-child(5) .el__bg:before {
   -webkit-transition-delay: 0.4s;

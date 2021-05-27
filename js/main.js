@@ -1,5 +1,5 @@
 function html() {
-	const root = document.	getElementById("main");
+	const root = document.getElementById("main");
 	let text = '';
 	for (let i = 0; i < 5; i += 1) {
 		text += `<!-- el start -->
@@ -14,16 +14,16 @@ function html() {
           <div class="el__content">
             <div class="el__text"></div>
             <div class="el__inner__component">
-              <div class="details"> </div>
-              <div class="seans"> </div>
-              <a class="link" href=""></a>
+              <div class="el__details"> </div>
+              <div class="el__seans"> </div>
+              <iframe class="el__player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="el__close-btn"></div>
           </div>
         </div>
       </div>
       <div class="el__index">
-        <!-- <div class="el__index-back">3</div> -->
+        <!-- <div class="el__index-back"></div> -->
         <div class="el__index-front">
           <!-- <div class="el__index-overlay" data-index="3">3</div> -->
         </div>
