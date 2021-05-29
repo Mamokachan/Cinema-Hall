@@ -3,7 +3,7 @@ const DATABASE = [
 movie: 'Неприкасаемые / 1+1',
 detail: `Оригинальное название: Intouchables; Год: 2011; Страна: Франция; Продолжительность: 01:52:25; Жанр: Драмы, Комедии; Режиссер: Оливье Накаш, Эрик Толедано; В главных ролях: Франсуа Клюзе, Омар Си, Анн Ле Ни, Одри Флеро, Клотильд Молле, Альба Гайя Крагеде Беллуджи, Сирил Менди, Кристиан Амери, Грегуар Эстерманн, Жозефин де Мо`,
 plot: '<p>В результате страшного несчастного случая Филипп, очень богатый и известный аристократ, лишился возможности ходить, и теперь навсегда прикован к инвалидному креслу. Он решает нанять себе помощника, который стал бы для него подмогой в непростых делах инвалида. Но выбор его весьма странен. Его спутником становится недавно вышедший из тюрьмы молодой человек. И он не ошибся. Не смотря на неподвижность Филиппа, парню удаётся вернуть того к жизни. Его бесшабашные авантюры и шутки оживляют аристократа и возвращают его в реальный мир.</p>',
-img: 'https://avatars.mds.yandex.net/get-zen_doc/1328466/pub_5e8b4f673cbda1194d5d9397_5e8b5b223cbda1194d5d94b3/scale_1200',
+img: 'https://image.tmdb.org/t/p/w1280/7Yela5cfzuhNvnqqrLyhVhqXF95.jpg',
 link: 'https://www.youtube.com/embed/whTjYy464cY',
 trailer: 'https://www.youtube.com/embed/tTwFeGArcrs',
 session: [{
@@ -157,7 +157,7 @@ function showSeat (session, root) {
 	let cinemahall = `
 	<div class="mw-session">
 		<div id="tickets">Вы ещё не выбрали место</div>
-	<div id="cinemahall"> 
+	<div id="cinemahall">
 		${forArr}
 		</div>
 	</div>
@@ -173,7 +173,7 @@ function seatClick(session, dbIndex) {
 	const seats = document.getElementsByClassName("seat");
 	let root = document.getElementById("tickets");
 	const seatsArr = Array.from(seats);
-	let show = seatsArr.forEach((eachSeat, idex) => 
+	let show = seatsArr.forEach((eachSeat, idex) =>
 		eachSeat.addEventListener('click', function clickID () {
 			const curSeat = parseInt(this.id);
 			if (this.classList.contains('booked')) {
@@ -182,7 +182,7 @@ function seatClick(session, dbIndex) {
 			else {
 				let row = parseInt(curSeat/10);
 				let seat = curSeat%10;
-				
+
 				let allInf = `${getData+';'+'movieRow='+(row+1)+';'+'movieSeat='+(seat+1)}`;
 				console.log(allInf);
 				root.innerHTML = `Вы выбрали место под номер ${curSeat+1}. <p>Ваше место в кинотеатре: <p>${row+1} ряд ${seat+1} место.</p> </p> <a id="movie" href=${URL+'?'+allInf} target='_blank'>Приятного просмотра!</a>`
@@ -209,7 +209,7 @@ function loader() {
 		temp = DATABASE[i].img;
 		bg[i].style.backgroundImage = `url(${temp})`;
 		bg[i].style.backgroundRepeat = "no-repeat";
-		bg[i].style.backgroundPosition = "left"; 
+		bg[i].style.backgroundPosition = "left";
 		bg[i].style.backgroundSize = 'contain';
 		bg[i].style.backgroundAttachment = 'fixed';
 		// фоновые постеры для секций
@@ -240,7 +240,7 @@ function renderSeans() {
 
 	seansRoot.forEach(function (current, index) {
 	session = DATABASE[index].session;
-	let links = ``; 
+	let links = ``;
 
 	for (let i = 0; i < session.length; i++) {
 		links += `<span class="el__sesion__link" id=${index+"-"+i} onclick="sessionClick(this)"> Сеанс ${session[i].date}  </span> <br>`
