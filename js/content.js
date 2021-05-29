@@ -5,11 +5,21 @@ detail: `Оригинальное название: Intouchables; Год: 2011; 
 plot: '<p>В результате страшного несчастного случая Филипп, очень богатый и известный аристократ, лишился возможности ходить, и теперь навсегда прикован к инвалидному креслу. Он решает нанять себе помощника, который стал бы для него подмогой в непростых делах инвалида. Но выбор его весьма странен. Его спутником становится недавно вышедший из тюрьмы молодой человек. И он не ошибся. Не смотря на неподвижность Филиппа, парню удаётся вернуть того к жизни. Его бесшабашные авантюры и шутки оживляют аристократа и возвращают его в реальный мир.</p>',
 img: 'https://avatars.mds.yandex.net/get-zen_doc/1328466/pub_5e8b4f673cbda1194d5d9397_5e8b5b223cbda1194d5d94b3/scale_1200',
 link: 'https://www.youtube.com/embed/whTjYy464cY',
-trailer: 'https://www.youtube.com/embed/tTwFeGArcrs',
+trailer: 'https://www.youtube.com/embed/aMEYTIt6xzU',
 session: [{
 		date: 15.04,
 		seat: 90,
 		reserved: [0, 15, 23, 34, 47],
+		},
+		{
+		date: 16.04,
+		seat: 60,
+		reserved: [2, 9, 16, 27, 29],
+		},
+		{
+		date: 16.04,
+		seat: 70,
+		reserved: [2, 9, 16, 27, 29],
 		},
 		{
 		date: 16.04,
@@ -39,6 +49,16 @@ session: [{
 		date: 16.04,
 		seat: 70,
 		reserved: [2, 9, 16, 27, 29],
+		},
+		{
+		date: 16.04,
+		seat: 100,
+		reserved: [2, 6, 10, 16, 27, 29, 34, 56, 57, 67, 72, 84, 91],
+		},
+		{
+		date: 16.04,
+		seat: 80,
+		reserved: [0, 5, 19, 25, 67, 77],
 		},
 		{
 		date: 17.04,
@@ -78,11 +98,7 @@ plot: '<p>Трикс вернулись! Они хотят завладеть И
 img: 'http://media.filmz.ru/photos/full/filmz.ru_f_197953.jpg',
 link: 'https://www.youtube.com/embed/TPvcnrvav6c',
 trailer: 'https://www.youtube.com/embed/ET0VNK2dii8',
-session: [{
-		date: 15.04,
-		seat: 80,
-		reserved: [0, 15, 23, 34, 47],
-		},
+session: [
 		{
 		date: 16.04,
 		seat: 50,
@@ -182,10 +198,10 @@ function seatClick(session, dbIndex) {
 			else {
 				let row = parseInt(curSeat/10);
 				let seat = curSeat%10;
-				
+
 				let allInf = `${getData+';'+'movieRow='+(row+1)+';'+'movieSeat='+(seat+1)}`;
-				console.log(allInf);
-				root.innerHTML = `Вы выбрали место под номер ${curSeat+1}. <p>Ваше место в кинотеатре: <p>${row+1} ряд ${seat+1} место.</p> </p> <a id="movie" href=${URL+'?'+allInf} target='_blank'>Приятного просмотра!</a>`
+				this.classList.toggle("booked");
+				root.innerHTML = `Вы выбрали место под номер ${curSeat+1}. <p>Ваше место в кинотеатре: <p>${row+1} ряд ${seat+1} место.</p> <p>Приятного просмотра!</p> <a href=${URL+'?'+allInf} target='_blank'class="shine-button">Перейдите на страницу просмотра</a>`
 			}
 		  } )
 		);
@@ -203,7 +219,7 @@ function loader() {
 
 	for (let i = 0; i < DATABASE.length; i += 1) {
 
-		heading[i].innerHTML = DATABASE[i].movie;
+		heading[i].innerHTML = '⚝ '+DATABASE[i].movie+' ⚝';
 		// заголовки секций, название фильма
 
 		temp = DATABASE[i].img;
@@ -246,7 +262,6 @@ function renderSeans() {
 		links += `<span class="el__sesion__link" id=${index+"-"+i} onclick="sessionClick(this)"> Сеанс ${session[i].date}  </span> <br>`
 	};
 
-	//let session-root = `<div class="session-root" id="1"> </div>`;
 	let div = document.createElement('div');
 	div.className = "session-root";
 	div.id = index;

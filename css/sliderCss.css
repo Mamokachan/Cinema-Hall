@@ -6,18 +6,18 @@
 
 body {
   background: #1f1f1f;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Vollkorn', serif;
 }
 
 .cont {
   position: relative;
   overflow: hidden;
   height: 95vh;
-  padding: 80px 70px;
+  padding: 20px 70px;
 }
 .cont__inner {
   position: relative;
-  height: 100%;
+  height: 95%;
 }
 .cont__inner:hover .el__bg:after {
   opacity: 1;
@@ -150,6 +150,7 @@ body {
   flex: 1;
   text-align: center;
   padding: 2% 0;
+  letter-spacing: 2px;
 }
 .el__content {
   z-index: -1;
@@ -174,6 +175,8 @@ body {
 .el__text {
   text-transform: uppercase;
   font-size: 40px;
+  font-weight: 900;
+  text-shadow: 3px 5px 6px #FFC0CB;
   color: #fff;
 }
 
@@ -347,7 +350,6 @@ body {
 .el:nth-child(1) .el__bg:before {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
-  /*background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-3.jpg");*/
 }
 .el:nth-child(2) {
   -webkit-transform: translate3d(105.20833%, 0, 0);
@@ -375,7 +377,6 @@ body {
 .el:nth-child(2) .el__bg:before {
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
-  /*background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-4.jpg");*/
 }
 .el:nth-child(3) {
   -webkit-transform: translate3d(210.41667%, 0, 0);
@@ -403,7 +404,6 @@ body {
 .el:nth-child(3) .el__bg:before {
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
-  /*background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-5.jpg");*/
 }
 .el:nth-child(4) {
   -webkit-transform: translate3d(315.625%, 0, 0);
@@ -431,7 +431,6 @@ body {
 .el:nth-child(4) .el__bg:before {
   -webkit-transition-delay: 0.3s;
           transition-delay: 0.3s;
-  /*background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-6.jpg");*/
 }
 .el:nth-child(5) {
   -webkit-transform: translate3d(420.83333%, 0, 0);
@@ -459,7 +458,6 @@ body {
 .el:nth-child(5) .el__bg:before {
   -webkit-transition-delay: 0.4s;
           transition-delay: 0.4s;
-  /*background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-7.jpg");*/
 }
 .el:hover .el__bg:after {
   opacity: 0;
@@ -504,13 +502,18 @@ body {
   right: 5px;
 }
 
+.el__seans {
+  margin: 15px;
+}
+
 .el__sesion__link {
-color: white;
+color: #FFF;
 text-decoration: underline;
+text-align: center;
 }
 
 .el__sesion__link:hover {
-color: lightblue;
+color: #FFC0CB;
 }
 
 
@@ -518,11 +521,11 @@ color: lightblue;
  position: absolute;
   right: 5%;
   top: 0;
-  width: 50%;
-  height: 90%;
+  width: 55%;
+  height: 95%;
   padding: 10px 30px;
   margin: 30px;
-  font-size: 3em;
+  font-size: 40px;
   color: #fff;
   background: #2b2b2b;
   overflow: scroll; /*hidden*/
