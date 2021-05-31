@@ -30,6 +30,7 @@ let movieLink = document.getElementById("moviePlayer");
 let movieName = document.getElementById("movieName");
 let row = document.getElementById("row");
 
+window.top.document.title = decodeURI(movieData.movieName);
 wrapper.style.backgroundImage = `url(${movieData.movieImg})`;
 movieLink.src = movieData.movieLink;
 movieName.innerHTML = decodeURI(movieData.movieName);
