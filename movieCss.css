@@ -36,15 +36,30 @@ body {
   display:flex;
   flex-direction: column;
   align-items: center;
-  color: #d4d4d4;
+  color: #ffd0d8;
 }
 
 .title {
-  background-color: #313131;
+  -webkit-background-clip: text;
+  padding: 0.3em 0.6em ;
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #ffd0d8 40%, #D3D3D3 60%);
+  border-image-slice: 1;
+  text-shadow: 3px 5px 6px #D3D3D3
 }
 
-#movieName {
+#place {
+display:flex;
+-webkit-background-clip: text;
+padding: 0.3em 0.6em ;
+border: 3px solid transparent;
+border-image: linear-gradient(135deg, #ffd0d8 40%, #D3D3D3 60%);
+border-image-slice: 1;
+text-shadow: 3px 5px 6px #D3D3D3
+}
 
+#text {
+font-size: larger;
 }
 
 #moviePlayer {
@@ -57,12 +72,5 @@ body {
   display:flex;
   flex-direction: column;
   align-items: center;
-  color: #d4d4d4;
-}
-
-#seat {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  color: #d4d4d4;
+  color: #ffd0d8;
 }
