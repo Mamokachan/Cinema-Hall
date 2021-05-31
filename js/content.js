@@ -169,7 +169,7 @@ function showSeat (session, root) {
 	let cinemahall = `
 	<div class="mw-session">
 		<div id="tickets">Вы ещё не выбрали место</div>
-	<div id="cinemahall"> 
+	<div id="cinemahall">
 		${forArr}
 		</div>
 	</div>
@@ -183,7 +183,7 @@ function seatClick(session, dbIndex) {
 	const seats = document.getElementsByClassName("seat");
 	let root = document.getElementById("tickets");
 	const seatsArr = Array.from(seats);
-	let show = seatsArr.forEach((eachSeat, idex) => 
+	let show = seatsArr.forEach((eachSeat, idex) =>
 		eachSeat.addEventListener('click', function clickID () {
 			const curSeat = parseInt(this.id);
 			if (this.classList.contains('booked')) {
@@ -218,7 +218,7 @@ function loader() {
 		temp = DATABASE[i].img;
 		bg[i].style.backgroundImage = `url(${temp})`;
 		bg[i].style.backgroundRepeat = "no-repeat";
-		bg[i].style.backgroundPosition = "left"; 
+		bg[i].style.backgroundPosition = "left";
 		bg[i].style.backgroundSize = 'contain';
 		bg[i].style.backgroundAttachment = 'fixed';
 		// фоновые постеры для секций
@@ -249,7 +249,7 @@ function renderSeans() {
 
 	seansRoot.forEach(function (current, index) {
 	session = DATABASE[index].session;
-	let links = ``; 
+	let links = ``;
 
 	for (let i = 0; i < session.length; i++) {
 		links += `<span class="el__sesion__link" id=${index+"-"+i} onclick="sessionClick(this)"> Сеанс ${session[i].date}  </span> <br>`
