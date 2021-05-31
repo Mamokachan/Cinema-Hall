@@ -15,6 +15,7 @@ function html() {
             <div class="el__text"></div>
             <div class="el__inner__component">
               <div class="el__details"> </div>
+              <div class="el__plots"> </div>
               <div class="el__seans"> </div>
               <iframe class="el__player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
