@@ -1,8 +1,10 @@
+'use strict';
+
 function html() {
-	const root = document.getElementById("main");
-	let text = '';
-	for (let i = 0; i < 5; i += 1) {
-		text += `<!-- el start -->
+    const root = document.getElementById('main');
+    let text = '';
+    for (let i = 0; i < 5; i += 1) {
+        text += `<!-- el start -->
 
     <div class="el">
       <div class="el__overflow">
@@ -26,14 +28,14 @@ function html() {
       <div class="el__index">
         <!-- <div class="el__index-back"></div> -->
         <div class="el__index-front">
-          <!-- <div class="el__index-overlay" data-index="3">3</div> -->
+          <!-- <div class="el__index-overlay"></div> -->
         </div>
       </div>
     </div>
 
-    <!-- el end -->`
-	}
-	root.innerHTML = text;
+    <!-- el end -->`;
+    }
+    root.innerHTML = text;
 }
 
-html()
+html();

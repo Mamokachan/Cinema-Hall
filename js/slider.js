@@ -1,12 +1,14 @@
-let cont = document.querySelector('.cont');
-let elsArr = [].slice.call(document.querySelectorAll('.el'));
-let closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
+'use strict';
 
-setTimeout(function() {
+const cont = document.querySelector('.cont');
+const elsArr = [].slice.call(document.querySelectorAll('.el'));
+const closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
+
+setTimeout(() => {
   cont.classList.remove('s--inactive');
 }, 200);
 
-elsArr.forEach(function(el) {
+elsArr.forEach(el => {
   el.addEventListener('click', function() {
     if (this.classList.contains('s--active')) return;
     cont.classList.add('s--el-active');
@@ -14,13 +16,17 @@ elsArr.forEach(function(el) {
   });
 });
 
-closeBtnsArr.forEach(function(btn) {
-  btn.addEventListener('click', function(e) {
+closeBtnsArr.forEach(btn => {
+  btn.addEventListener('click', e => {
     e.stopPropagation();
     cont.classList.remove('s--el-active');
     document.querySelector('.el.s--active').classList.remove('s--active');
-    
-    let sessionRoot = Array.from(document.getElementsByClassName('session-root'));
-    sessionRoot.forEach((current) => {current.innerHTML = ''});
+
+    const sessionRoot = Array.from(
+      document.getElementsByClassName('session-root')
+    );
+    sessionRoot.forEach(current => {
+      current.innerHTML = '';
+    });
   });
 });

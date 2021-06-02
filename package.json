@@ -1,27 +1,25 @@
 {
-  "name": "Cinema-Hall",
-  "version": "1.0.0",
-  "description": "Small online cinema with a selection of 5 different films and after you choose one of a suitable session you can freely watch this movie on the new page. :)",
-  "main": "index.js",
-  "dependencies": {
-    "eslint": "^7.27.0",
-    "npm-package-json-lint": "^5.1.0",
-    "prettier": "^2.3.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "npm run -s lint && node test/all.js",
-    "lint": "eslint . --fix && prettier --write \"**/*.js\" \"**/*.json\"",
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mamokachan/Cinema-Hall.git"
-  },
-  "keywords": [],
-  "author": "Aleksandra Mishchenko (https://github.com/Mamokachan) and Mariya Lavrynovych (https://github.com/MaruKate)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mamokachan/Cinema-Hall/issues"
-  },
-  "homepage": "https://github.com/Mamokachan/Cinema-Hall#readme"
+    "name": "cinema-hall",
+    "version": "1.0.0",
+    "description": "Small online cinema with a selection of 5 different films and after you choose one of a suitable session you can freely watch this movie on the new page.",
+    "main": "index.html",
+    "dependencies": {},
+    "devDependencies": {
+        "eslint": "^7.27.0",
+        "prettier": "2.3.0"
+    },
+    "scripts": {
+        "test": "npm run -s lint && node test/all.js",
+        "lint": "eslint . --fix && prettier --write \"/*.js\" \"/*.json\""
+    },
+    "author": "Aleksandra Mishchenko (https://github.com/Mamokachan) and Mariya Lavrynovych (https://github.com/MaruKate)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Mamokachan/Cinema-Hall/issues"
+    },
+    "homepage": "https://github.com/Mamokachan/Cinema-Hall#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mamokachan/Cinema-Hall.git"
+    }
 }
