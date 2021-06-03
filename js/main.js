@@ -1,10 +1,10 @@
 'use strict';
 
 function html() {
-    const root = document.getElementById('main');
-    let text = '';
-    for (let i = 0; i < 5; i += 1) {
-        text += `<!-- el start -->
+  const root = window.document.getElementById('main');
+  let text = '';
+  for (let i = 0; i < 5; i += 1) {
+    text += `<!-- el start -->
 
     <div class="el">
       <div class="el__overflow">
@@ -34,8 +34,8 @@ function html() {
     </div>
 
     <!-- el end -->`;
-    }
-    root.innerHTML = text;
+  }
+  root.innerHTML = text;
 }
 
 html();

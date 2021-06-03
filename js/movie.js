@@ -1,6 +1,4 @@
-'use strict';
-
-const address = document.location;
+const address = window.document.location;
 
 const URL = address.search.slice(1);
 
@@ -10,10 +8,11 @@ const movieData = {};
 
 for (let k = 0; k < arrURL.length; k += 1) {
   const curr = arrURL[k].split('=');
+  // eslint-disable-next-line prefer-destructuring
   movieData[curr[0]] = curr[1];
 }
 
-const contain = document.getElementById('cont');
+const contain = window.document.getElementById('cont');
 contain.innerHTML = `
 	<div id="wrapper">
 	<div id="blur">
@@ -25,10 +24,10 @@ contain.innerHTML = `
 	</div></div>
 	`;
 
-const wrapper = document.getElementById('wrapper');
-const movieLink = document.getElementById('moviePlayer');
-const movieName = document.getElementById('movieName');
-const row = document.getElementById('row');
+const wrapper = window.document.getElementById('wrapper');
+const movieLink = window.document.getElementById('moviePlayer');
+const movieName = window.document.getElementById('movieName');
+const row = window.document.getElementById('row');
 
 window.top.document.title = decodeURI(movieData.movieName);
 wrapper.style.backgroundImage = `url(${movieData.movieImg})`;

@@ -1,5 +1,3 @@
-'use strict';
-
 const cont = document.querySelector('.cont');
 const elsArr = [].slice.call(document.querySelectorAll('.el'));
 const closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
@@ -9,7 +7,7 @@ setTimeout(() => {
 }, 200);
 
 elsArr.forEach(el => {
-  el.addEventListener('click', function() {
+  el.addEventListener('click', function click() {
     if (this.classList.contains('s--active')) return;
     cont.classList.add('s--el-active');
     this.classList.add('s--active');
@@ -23,10 +21,11 @@ closeBtnsArr.forEach(btn => {
     document.querySelector('.el.s--active').classList.remove('s--active');
 
     const sessionRoot = Array.from(
-      document.getElementsByClassName('session-root')
+      document.getElementsByClassName('session-root'),
     );
     sessionRoot.forEach(current => {
-      current.innerHTML = '';
+      const cur = current;
+      cur.innerHTML = '';
     });
   });
 });
