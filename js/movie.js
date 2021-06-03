@@ -1,18 +1,18 @@
-let address = document.location;
+const address = window.document.location;
 
-let URL = address.search.slice(1);
+const URL = address.search.slice(1);
 
-let arrURL = URL.split(';');
+const arrURL = URL.split(';');
 
-let movieData = { };
+const movieData = {};
 
 for (let k = 0; k < arrURL.length; k += 1) {
-	let curr = arrURL[k].split('=');
-	movieData[curr[0]] = curr[1];
+  const curr = arrURL[k].split('=');
+  // eslint-disable-next-line prefer-destructuring
+  movieData[curr[0]] = curr[1];
 }
 
-
-let contain = document.getElementById("cont");
+const contain = window.document.getElementById('cont');
 contain.innerHTML = `
 	<div id="wrapper">
 	<div id="blur">
@@ -22,13 +22,12 @@ contain.innerHTML = `
 	<p class="title" id="text">Приятного просмотра</p></div>
 	<iframe id="moviePlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div></div>
-	`
+	`;
 
-
-let wrapper = document.getElementById("wrapper");
-let movieLink = document.getElementById("moviePlayer");
-let movieName = document.getElementById("movieName");
-let row = document.getElementById("row");
+const wrapper = window.document.getElementById('wrapper');
+const movieLink = window.document.getElementById('moviePlayer');
+const movieName = window.document.getElementById('movieName');
+const row = window.document.getElementById('row');
 
 window.top.document.title = decodeURI(movieData.movieName);
 wrapper.style.backgroundImage = `url(${movieData.movieImg})`;
