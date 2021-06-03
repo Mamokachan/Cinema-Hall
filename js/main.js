@@ -1,3 +1,5 @@
+'use strict';
+
 function html() {
   const root = window.document.getElementById('main');
   let text = '';
@@ -26,7 +28,7 @@ function html() {
       <div class="el__index">
         <!-- <div class="el__index-back"></div> -->
         <div class="el__index-front">
-          <!-- <div class="el__index-overlay" data-index="3">3</div> -->
+          <!-- <div class="el__index-overlay"></div> -->
         </div>
       </div>
     </div>
