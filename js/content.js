@@ -196,17 +196,17 @@ function seatClick(session, dbIndex) {
   const seats = document.getElementsByClassName('seat');
   const root = document.getElementById('tickets');
   const seatsArr = Array.from(seats);
-  seatsArr.forEach(eachSeat =>
+  seatsArr.forEach((eachSeat) =>
     eachSeat.addEventListener('click', function clickID() {
-      const curSeat = parseInt(this.id, 2);
+      const curSeat = parseInt(this.id, 10);
       if (this.classList.contains('booked')) {
         alert(
           `Вы нажали на ${
             curSeat + 1
-          } место и оно уже занято! Пожалуйста, выберите другое сидение.`,
+          } место и оно уже занято! Пожалуйста, выберите другое сидение.`
         );
       } else {
-        const row = parseInt(curSeat / 10, 2);
+        const row = parseInt(curSeat / 10, 10);
         const seat = curSeat % 10;
         const allInf = `${getData};movieRow=${row + 1};movieSeat=${seat + 1}`;
         this.classList.toggle('booked');
@@ -216,13 +216,13 @@ function seatClick(session, dbIndex) {
           seat + 1
         } место.</p> <p>Приятного просмотра!</p> <a href=${`${URL}?${allInf}`} target='_blank'class="shine-button">Перейдите на страницу просмотра</a>`;
       }
-    }),
+    })
   );
 }
 
 function showBooked(places) {
   const seats = document.getElementsByClassName('seat');
-  const {reserved} = places;
+  const { reserved } = places;
   const arrSeat = Array.from(seats);
 
   arrSeat.forEach((current, index) => {

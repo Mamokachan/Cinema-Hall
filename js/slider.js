@@ -6,7 +6,7 @@ setTimeout(() => {
   cont.classList.remove('s--inactive');
 }, 200);
 
-elsArr.forEach(el => {
+elsArr.forEach((el) => {
   el.addEventListener('click', function click() {
     if (this.classList.contains('s--active')) return;
     cont.classList.add('s--el-active');
@@ -14,16 +14,16 @@ elsArr.forEach(el => {
   });
 });
 
-closeBtnsArr.forEach(btn => {
-  btn.addEventListener('click', e => {
+closeBtnsArr.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
     e.stopPropagation();
     cont.classList.remove('s--el-active');
     document.querySelector('.el.s--active').classList.remove('s--active');
 
     const sessionRoot = Array.from(
-      document.getElementsByClassName('session-root'),
+      document.getElementsByClassName('session-root')
     );
-    sessionRoot.forEach(current => {
+    sessionRoot.forEach((current) => {
       const cur = current;
       cur.innerHTML = '';
     });

@@ -1,5 +1,3 @@
-'use strict';
-
 function html() {
   const root = window.document.getElementById('main');
   let text = '';
