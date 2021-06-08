@@ -6,17 +6,18 @@ setTimeout(() => {
   cont.classList.remove('s--inactive');
 }, 200);
 
-elsArr.forEach((el) => {
+// eslint-disable-next-line no-restricted-syntax
+for (const el of elsArr) {
   el.addEventListener('click', function click() {
     if (this.classList.contains('s--active')) return;
     cont.classList.add('s--el-active');
     this.classList.add('s--active');
   });
-});
+}
 
 closeBtnsArr.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  btn.addEventListener('click', (event) => {
+    event.stopPropagation();
     cont.classList.remove('s--el-active');
     document.querySelector('.el.s--active').classList.remove('s--active');
 
