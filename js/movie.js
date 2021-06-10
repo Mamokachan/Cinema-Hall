@@ -1,4 +1,4 @@
-const address = window.document.location;
+const address = document.location;
 
 const URL = address.search.slice(1);
 
@@ -12,7 +12,7 @@ for (let k = 0; k < arrURL.length; k += 1) {
   movieData[curr[0]] = curr[1];
 }
 
-const contain = window.document.getElementById('cont');
+const contain = document.getElementById('cont');
 contain.innerHTML = `
 	<div id="wrapper">
 	<div id="blur">
@@ -24,10 +24,10 @@ contain.innerHTML = `
 	</div></div>
 	`;
 
-const wrapper = window.document.getElementById('wrapper');
-const movieLink = window.document.getElementById('moviePlayer');
-const movieName = window.document.getElementById('movieName');
-const row = window.document.getElementById('row');
+const wrapper = document.getElementById('wrapper');
+const movieLink = document.getElementById('moviePlayer');
+const movieName = document.getElementById('movieName');
+const row = document.getElementById('row');
 
 window.top.document.title = decodeURI(movieData.movieName);
 wrapper.style.backgroundImage = `url(${movieData.movieImg})`;

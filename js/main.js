@@ -1,5 +1,5 @@
 function html() {
-  const root = window.document.getElementById('main');
+  const root = document.getElementById('main');
   let text = '';
   for (let i = 0; i < 5; i += 1) {
     text += `

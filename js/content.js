@@ -169,6 +169,8 @@ const DATABASE = [
   },
 ];
 
+// секции и их заполнение
+
 function loader() {
   const heading = Array.from(document.getElementsByClassName('el__heading'));
   const bg = Array.from(document.getElementsByClassName('el__bg'));
@@ -176,15 +178,15 @@ function loader() {
   const plots = Array.from(document.getElementsByClassName('el__plots'));
   const name = Array.from(document.getElementsByClassName('el__text'));
   const treilers = Array.from(document.getElementsByClassName('el__player'));
-  let temp = '';
+  let tempImg = '';
   let tempDet = '';
 
   for (let i = 0; i < DATABASE.length; i += 1) {
     heading[i].innerHTML = `⚝ ${DATABASE[i].movie} ⚝`;
     // заголовки секций, название фильма
 
-    temp = DATABASE[i].img;
-    bg[i].style.backgroundImage = `url(${temp})`;
+    tempImg = DATABASE[i].img;
+    bg[i].style.backgroundImage = `url(${tempImg})`;
     bg[i].style.backgroundRepeat = 'no-repeat';
     bg[i].style.backgroundPosition = 'left';
     bg[i].style.backgroundSize = 'contain';
@@ -196,10 +198,11 @@ function loader() {
     for (let j = 0; j < par.length; j += 1) {
       tempDet += `<p>${par[j]}</p> `;
     }
+    // заполнение деталей фильма по секциям + перенос
 
     inf[i].innerHTML = tempDet;
     plots[i].innerHTML = DATABASE[i].plot;
-    // детали фильма в каждую секцию
+    // добавление краткого описания
 
     name[i].innerHTML = DATABASE[i].movie;
     // название фильма (левая часть)
@@ -211,12 +214,13 @@ function loader() {
 
 loader();
 
+// работа с сеансами
+
 function renderSeans() {
   const seansRoot = Array.from(document.getElementsByClassName('el__seans'));
   let session = null;
 
   seansRoot.forEach((current, index) => {
-    const cur = current;
     session = DATABASE[index].session;
     let links = ``;
 
@@ -230,15 +234,14 @@ function renderSeans() {
     div.className = 'session-root';
     div.id = index;
 
-    cur.innerHTML = links;
-    cur.append(div);
+    current.innerHTML = links;
+    current.append(div);
   });
 }
 
 renderSeans();
 
-function showSeat(session, rootParam) {
-  const root = rootParam;
+function showSeat(session, rootRender) {
   let forArr = ``;
   for (let i = 0; i < session; i += 1) {
     forArr += `<div class="seat" id=${i}> </div>`;
@@ -251,41 +254,7 @@ function showSeat(session, rootParam) {
 		</div>
 	</div>
 	`;
-  root.innerHTML = cinemahall;
-}
-
-function seatClick(session, dbIndex) {
-  const getData = `${
-    `movieImg=${DATABASE[dbIndex].img};` +
-    `movieLink=${DATABASE[dbIndex].link};` +
-    `movieName=${encodeURI(DATABASE[dbIndex].movie)}`
-  }`;
-  const URL = 'Movie.html';
-  const seats = document.getElementsByClassName('seat');
-  const root = document.getElementById('tickets');
-  const seatsArr = Array.from(seats);
-  for (let eachSeat of seatsArr) {
-    eachSeat.addEventListener('click', function clickID() {
-      const curSeat = Number(this.id);
-      if (this.classList.contains('booked')) {
-        alert(
-          `Вы нажали на ${
-            curSeat + 1
-          } место и оно уже занято! Пожалуйста, выберите другое сидение.`
-        );
-      } else {
-        const row = Math.round(Number(curSeat) / 10);
-        const seat = curSeat % 10;
-        const allInf = `${getData};movieRow=${row + 1};movieSeat=${seat + 1}`;
-        this.classList.toggle('booked');
-        root.innerHTML = `Вы выбрали место под номер ${
-          curSeat + 1
-        }. <p>Ваше место в кинотеатре: <p>${row + 1} ряд ${
-          seat + 1
-        } место.</p> <p>Приятного просмотра!</p> <a href=${`${URL}?${allInf}`} target='_blank'class="shine-button">Перейдите на страницу просмотра</a>`;
-      }
-    });
-  }
+  rootRender.innerHTML = cinemahall;
 }
 
 function showBooked(places) {
@@ -299,6 +268,44 @@ function showBooked(places) {
     }
   });
 }
+
+// нажатие на сиденье, запись места, передача даных на след. стр
+
+function seatClick(session, dbIndex) {
+  const getData = `${
+    `movieImg=${DATABASE[dbIndex].img};` +
+    `movieLink=${DATABASE[dbIndex].link};` +
+    `movieName=${encodeURI(DATABASE[dbIndex].movie)}`
+  }`;
+  const URL = 'Movie.html';
+  const seats = document.getElementsByClassName('seat');
+  const root = document.getElementById('tickets');
+  const seatsArr = Array.from(seats);
+  for (let eachSeat of seatsArr) {
+    eachSeat.addEventListener('click', function clickID() {
+      const curSeat = parseInt(this.id, 10);
+      if (this.classList.contains('booked')) {
+        alert(
+          `Вы нажали на ${
+            curSeat + 1
+          } место и оно уже занято! Пожалуйста, выберите другое сидение.`
+        );
+      } else {
+        const row = parseInt(curSeat / 10, 10);
+        const seat = curSeat % 10;
+        const allInf = `${getData};movieRow=${row + 1};movieSeat=${seat + 1}`;
+        this.classList.toggle('booked');
+        root.innerHTML = `Вы выбрали место под номер ${
+          curSeat + 1
+        }. <p>Ваше место в кинотеатре: <p>${row + 1} ряд ${
+          seat + 1
+        } место.</p> <p>Приятного просмотра!</p> <a href=${`${URL}?${allInf}`} target='_blank'class="shine-button">Перейдите на страницу просмотра</a>`;
+      }
+    });
+  }
+}
+
+// функция вызывается после отрисовки зала, навешивается обработчик событий
 
 // eslint-disable-next-line no-unused-vars
 function sessionClick(event) {
