@@ -221,6 +221,7 @@ function renderSeans() {
   let session = null;
 
   seansRoot.forEach((current, index) => {
+    const cur = current;
     session = DATABASE[index].session;
     let links = ``;
 
@@ -234,14 +235,15 @@ function renderSeans() {
     div.className = 'session-root';
     div.id = index;
 
-    current.innerHTML = links;
-    current.append(div);
+    cur.innerHTML = links;
+    cur.append(div);
   });
 }
 
 renderSeans();
 
 function showSeat(session, rootRender) {
+  const root = rootRender;
   let forArr = ``;
   for (let i = 0; i < session; i += 1) {
     forArr += `<div class="seat" id=${i}> </div>`;
@@ -254,7 +256,7 @@ function showSeat(session, rootRender) {
 		</div>
 	</div>
 	`;
-  rootRender.innerHTML = cinemahall;
+  root.innerHTML = cinemahall;
 }
 
 function showBooked(places) {
@@ -264,7 +266,9 @@ function showBooked(places) {
 
   arrSeat.forEach((current, index) => {
     for (let i = 0; i < reserved.length; i += 1) {
-      if (index === reserved[i]) current.classList.toggle('booked');
+      if (index === reserved[i]) {
+        current.classList.toggle('booked');
+      }
     }
   });
 }
@@ -281,7 +285,7 @@ function seatClick(session, dbIndex) {
   const seats = document.getElementsByClassName('seat');
   const root = document.getElementById('tickets');
   const seatsArr = Array.from(seats);
-  for (let eachSeat of seatsArr) {
+  for (const eachSeat of seatsArr) {
     eachSeat.addEventListener('click', function clickID() {
       const curSeat = parseInt(this.id, 10);
       if (this.classList.contains('booked')) {

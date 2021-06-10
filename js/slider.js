@@ -6,9 +6,11 @@ setTimeout(() => {
   cont.classList.remove('s--inactive');
 }, 200);
 
-for (let el of elsArr) {
+for (const el of elsArr) {
   el.addEventListener('click', function click() {
-    if (this.classList.contains('s--active')) return;
+    if (this.classList.contains('s--active')) {
+      return;
+    }
     cont.classList.add('s--el-active');
     this.classList.add('s--active');
   });
