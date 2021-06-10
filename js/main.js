@@ -2,8 +2,7 @@ function html() {
   const root = window.document.getElementById('main');
   let text = '';
   for (let i = 0; i < 5; i += 1) {
-    text += `<!-- el start -->
-
+    text += `
     <div class="el">
       <div class="el__overflow">
         <div class="el__inner">
@@ -29,9 +28,7 @@ function html() {
           <!-- <div class="el__index-overlay"></div> -->
         </div>
       </div>
-    </div>
-
-    <!-- el end -->`;
+    </div> `;
   }
   root.innerHTML = text;
 }

@@ -169,82 +169,6 @@ const DATABASE = [
   },
 ];
 
-function showSeat(session, rootParam) {
-  const root = rootParam;
-  let forArr = ``;
-  for (let i = 0; i < session; i += 1) {
-    forArr += `<div class="seat" id=${i}> </div>`;
-  }
-  const cinemahall = `
-	<div class="mw-session">
-		<div id="tickets">Вы ещё не выбрали место</div>
-	<div id="cinemahall">
-		${forArr}
-		</div>
-	</div>
-	`;
-  root.innerHTML = cinemahall;
-}
-
-function seatClick(session, dbIndex) {
-  const getData = `${
-    `movieImg=${DATABASE[dbIndex].img};` +
-    `movieLink=${DATABASE[dbIndex].link};` +
-    `movieName=${encodeURI(DATABASE[dbIndex].movie)}`
-  }`;
-  const URL = 'Movie.html';
-  const seats = document.getElementsByClassName('seat');
-  const root = document.getElementById('tickets');
-  const seatsArr = Array.from(seats);
-  // eslint-disable-next-line no-restricted-syntax
-  for (const eachSeat of seatsArr) {
-    eachSeat.addEventListener('click', function clickID() {
-      const curSeat = Number(this.id);
-      if (this.classList.contains('booked')) {
-        alert(
-          `Вы нажали на ${
-            curSeat + 1
-          } место и оно уже занято! Пожалуйста, выберите другое сидение.`
-        );
-      } else {
-        const row = Math.round(Number(curSeat) / 10);
-        const seat = curSeat % 10;
-        const allInf = `${getData};movieRow=${row + 1};movieSeat=${seat + 1}`;
-        this.classList.toggle('booked');
-        root.innerHTML = `Вы выбрали место под номер ${
-          curSeat + 1
-        }. <p>Ваше место в кинотеатре: <p>${row + 1} ряд ${
-          seat + 1
-        } место.</p> <p>Приятного просмотра!</p> <a href=${`${URL}?${allInf}`} target='_blank'class="shine-button">Перейдите на страницу просмотра</a>`;
-      }
-    });
-  }
-}
-
-function showBooked(places) {
-  const seats = document.getElementsByClassName('seat');
-  const { reserved } = places;
-  const arrSeat = Array.from(seats);
-
-  arrSeat.forEach((current, index) => {
-    for (let i = 0; i < reserved.length; i += 1) {
-      if (index === reserved[i]) current.classList.toggle('booked');
-    }
-  });
-}
-
-// eslint-disable-next-line no-unused-vars
-function sessionClick(event) {
-  const indexes = event.id.split('-');
-  const session = DATABASE[indexes[0]].session[indexes[1]];
-  const sessionCount = session.seat;
-  const root = document.getElementsByClassName('session-root');
-
-  showSeat(sessionCount, root[indexes[0]]);
-  showBooked(session);
-  seatClick(session, indexes[0]);
-}
-
 function loader() {
   const heading = Array.from(document.getElementsByClassName('el__heading'));
   const bg = Array.from(document.getElementsByClassName('el__bg'));
@@ -312,3 +236,78 @@ function renderSeans() {
 }
 
 renderSeans();
+
+function showSeat(session, rootParam) {
+  const root = rootParam;
+  let forArr = ``;
+  for (let i = 0; i < session; i += 1) {
+    forArr += `<div class="seat" id=${i}> </div>`;
+  }
+  const cinemahall = `
+	<div class="mw-session">
+		<div id="tickets">Вы ещё не выбрали место</div>
+	<div id="cinemahall">
+		${forArr}
+		</div>
+	</div>
+	`;
+  root.innerHTML = cinemahall;
+}
+
+function seatClick(session, dbIndex) {
+  const getData = `${
+    `movieImg=${DATABASE[dbIndex].img};` +
+    `movieLink=${DATABASE[dbIndex].link};` +
+    `movieName=${encodeURI(DATABASE[dbIndex].movie)}`
+  }`;
+  const URL = 'Movie.html';
+  const seats = document.getElementsByClassName('seat');
+  const root = document.getElementById('tickets');
+  const seatsArr = Array.from(seats);
+  for (let eachSeat of seatsArr) {
+    eachSeat.addEventListener('click', function clickID() {
+      const curSeat = Number(this.id);
+      if (this.classList.contains('booked')) {
+        alert(
+          `Вы нажали на ${
+            curSeat + 1
+          } место и оно уже занято! Пожалуйста, выберите другое сидение.`
+        );
+      } else {
+        const row = Math.round(Number(curSeat) / 10);
+        const seat = curSeat % 10;
+        const allInf = `${getData};movieRow=${row + 1};movieSeat=${seat + 1}`;
+        this.classList.toggle('booked');
+        root.innerHTML = `Вы выбрали место под номер ${
+          curSeat + 1
+        }. <p>Ваше место в кинотеатре: <p>${row + 1} ряд ${
+          seat + 1
+        } место.</p> <p>Приятного просмотра!</p> <a href=${`${URL}?${allInf}`} target='_blank'class="shine-button">Перейдите на страницу просмотра</a>`;
+      }
+    });
+  }
+}
+
+function showBooked(places) {
+  const seats = document.getElementsByClassName('seat');
+  const { reserved } = places;
+  const arrSeat = Array.from(seats);
+
+  arrSeat.forEach((current, index) => {
+    for (let i = 0; i < reserved.length; i += 1) {
+      if (index === reserved[i]) current.classList.toggle('booked');
+    }
+  });
+}
+
+// eslint-disable-next-line no-unused-vars
+function sessionClick(event) {
+  const indexes = event.id.split('-');
+  const session = DATABASE[indexes[0]].session[indexes[1]];
+  const sessionCount = session.seat;
+  const root = document.getElementsByClassName('session-root');
+
+  showSeat(sessionCount, root[indexes[0]]);
+  showBooked(session);
+  seatClick(session, indexes[0]);
+}

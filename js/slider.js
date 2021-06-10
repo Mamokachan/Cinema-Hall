@@ -6,8 +6,7 @@ setTimeout(() => {
   cont.classList.remove('s--inactive');
 }, 200);
 
-// eslint-disable-next-line no-restricted-syntax
-for (const el of elsArr) {
+for (let el of elsArr) {
   el.addEventListener('click', function click() {
     if (this.classList.contains('s--active')) return;
     cont.classList.add('s--el-active');
